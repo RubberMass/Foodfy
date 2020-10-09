@@ -1,0 +1,58 @@
+{% extends "layout.njk" %}
+
+{% block head %}
+    <title>{{course.id}}</title>
+{% endblock %}
+
+{% block content %}
+
+{# Apresentation #}
+
+    <div class="courseImg">
+        <img src="/materials/{{course.id}}.png" alt="Imagem de {{course.title}}">
+    </div>
+
+    <div class="courseTitle">
+        <h1>{{course.title}}</h1>
+
+        <p>{{course.autor}}</p>
+    </div>
+   
+        {# Ingredients #}
+        <div class="ingredients">
+            <div class="button-position">
+                <h1>Ingredientes</h1>
+                <button id="ingredients-button">Esconder</button>
+            </div>
+
+            <div class="ingred">
+                <ul class="ingredients">
+                    {% for ingredient in course.ingredients %}
+                        <li>{{ingredient}}</li>
+                    {% endfor%}
+                </ul>
+            </div>
+        </div>
+        <div class="preparation">
+            <div class="button-position">
+                <h1>Modo de prepado</h1>
+                <button id="preparation-button">Esconder</button>
+            </div>
+            <div class="paragraphs">
+                {% for preparation in course.preparation %}
+                    <p>{{preparation}}</p>
+                {% endfor%}
+            </div>
+        </div>
+        <div class="information">
+            {% if course.information %}
+                <div class="button-position">
+                    <h1>Informações</h1>
+                    <button id="information-button">Esconder</button>
+                </div>
+                <p class="information">{{course.information}}</p>
+            {% endif%}
+        </div>
+    </div>
+    <script src="/script.js"></script>
+    {% endblock %}
